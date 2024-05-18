@@ -143,7 +143,23 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
+/* Reset ends */
+:root {
+  --background-color: white;
+  --primary-text-color: black;
+  --accent-color: black;
+  --secondary-text-color: black;
+}
 body {
   font-family: "Montserrat", sans-serif;
+}
+[data-theme="dark"] {
+  --background-color: black;
+  --primary-text-color: white;
+  --secondary-text-color: black;
+  --accent-color: white;
+}
+.app {
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
 }
