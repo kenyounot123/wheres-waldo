@@ -1,15 +1,46 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import "./Home.css";
 export default () => (
-  <div className="">
-    <div className="">
-      <div className="">
-        <h1 className="">Food Recipes</h1>
-        <p className="">
-          A curated list of recipes for the best homemade meal and delicacies.
-        </p>
-        <hr className="" />
+  <div className="container">
+    <div className="d-flex">
+      <h1 className="home-title">A Wheres-Waldo Game Variation</h1>
+      <div className="home-target-img">
+        <img src="targets.jpg" alt="Famous people" />
+      </div>
+      <p className="home-text">
+        Find these 4 people in the crowd and see if you can make it to the Hall
+        of Fame with your record
+      </p>
+      <h2>How To Play</h2>
+      <p>Click anywhere on the photo and make your guess</p>
+      <div className="home-gif">
+        <img src="demoGuess.gif" alt="gif" />
+      </div>
+      {/* Dynamically add player names and time from db */}
+      <div className="hall-of-fame">
+        <table>
+          <thead>
+            <th colSpan={3}>Hall of Fame</th>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>John Doe</td>
+              <td>1:23:45</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Jane Smith</td>
+              <td>1:30:00</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
