@@ -12,16 +12,21 @@ export default () => (
         Find these 4 people in the crowd and see if you can make it to the Hall
         of Fame with your record
       </p>
-      <h2>How To Play</h2>
+      <h2 className="home-instruction-title">How To Play</h2>
       <p>Click anywhere on the photo and make your guess</p>
       <div className="home-gif">
         <img src="demoGuess.gif" alt="gif" />
       </div>
+      <Link to={"/play"}>
+        <button>Play Now</button>
+      </Link>
       {/* Dynamically add player names and time from db */}
       <div className="hall-of-fame">
         <table>
           <thead>
-            <th colSpan={3}>Hall of Fame</th>
+            <tr>
+              <th colSpan={3}>Hall of Fame</th>
+            </tr>
             <tr>
               <th>Rank</th>
               <th>Name</th>

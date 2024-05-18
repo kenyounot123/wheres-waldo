@@ -3,13 +3,23 @@
   margin: 0 auto;
   text-align: center;
 }
+.home-title {
+  padding-top: 1em;
+  font-size: 2rem;
+}
+.home-text {
+  max-width: 60%;
+}
 .home-target-img,
 .home-gif {
-  width: 70%;
+  width: 60%;
 }
 .home-target-img img,
 .home-gif img {
   max-width: 100%;
+}
+.home-instruction-title {
+  font-size: 1.7rem;
 }
 .d-flex {
   display: flex;
@@ -39,12 +49,8 @@ td {
 th {
   background-color: #f2f2f2;
 }
-thead > th {
+table > thead > tr:first-child > th {
   background-color: black;
   color: white;
-}
-h1,
-h2 {
-  padding: 0;
-  margin: 0;
+  font-size: 1.7rem;
 }
