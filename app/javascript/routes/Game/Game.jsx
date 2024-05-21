@@ -1,25 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState, useRef } from "react";
 import "./Game.css";
 
 export default function Game() {
   // State to track the time user takes to complete the game
   const [timer, setTimer] = useState(0);
-  const [boardClicked, setBoardClicked] = useState(false);
+  const [clickPosition, setClickPosition] = useState(null);
   const imgRef = useRef();
-  const posX = useRef(0);
-  const posY = useRef(0);
-  function handleImageClick(e) {
-    // Get x and y position of cursor and display a box as well as guess options
-    const imgDimensions = imgRef.current.getBoundingClientRect();
-    if (imgRef.current) {
-      setBoardClicked(true);
-      posX.current = Math.abs(imgDimensions.x - e.clientX);
-      posY.current = Math.abs(imgDimensions.y - e.clientY);
-      console.log(posX.current);
-      console.log(posY.current);
+
+  useEffect(() => {
+    // Function to handle when image is clicked
+    // Get position and store it in state
+    const handleImageClick = (e) => {
+      if (imgRef.current) {
+        const imgDimensions = imgRef.current.getBoundingClientRect();
+        const posX = Math.abs(imgDimensions.x - e.clientX);
+        const posY = Math.abs(imgDimensions.y - e.clientY);
+        console.log(posX, posY);
+
+        // Add the new position to the state array
+        setClickPosition({ x: posX, y: posY });
+      }
+    };
+    // Add event listener on mount if img exists
+    const imgElement = imgRef.current;
+    if (imgElement) {
+      imgElement.addEventListener("click", handleImageClick);
     }
-  }
+
+    // Cleanup function to remove the event listener on unmount
+    return () => {
+      if (imgElement) {
+        imgElement.removeEventListener("click", handleImageClick);
+      }
+    };
+  }, []);
 
   return (
     <div className="game-container">
@@ -28,16 +43,13 @@ export default function Game() {
         <img src="targets.jpg" alt="People" />
       </div>
       <div className="board-pic-container">
-        <img
-          ref={imgRef}
-          onClick={(e) => handleImageClick(e)}
-          className="play-map"
-          src="map.jpg"
-          alt="Map"
-        />
-        {boardClicked && (
+        <img ref={imgRef} className="play-map" src="map.jpg" alt="Map" />
+        {clickPosition && (
           <div
-            style={{ top: `${posY}px`, left: `${posX}px` }}
+            style={{
+              top: `${clickPosition.y}px`,
+              left: `${clickPosition.x}px`,
+            }}
             className="target-box"
           ></div>
         )}
