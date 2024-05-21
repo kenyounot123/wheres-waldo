@@ -148,7 +148,7 @@ table {
   --background-color: white;
   --primary-text-color: black;
   --accent-color: black;
-  --secondary-text-color: black;
+  --secondary-text-color: white;
 }
 body {
   font-family: "Montserrat", sans-serif;
@@ -162,4 +162,6 @@ body {
 .app {
   background-color: var(--background-color);
   color: var(--primary-text-color);
+  height: 100%;
+  width: 100vw;
 }

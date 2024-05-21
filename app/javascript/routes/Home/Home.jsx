@@ -9,7 +9,7 @@ export default () => (
         <img src="targets.jpg" alt="Famous people" />
       </div>
       <p className="home-text">
-        Find these 4 people in the crowd and see if you can make it to the Hall
+        Find these 5 people in the crowd and see if you can make it to the Hall
         of Fame with your record
       </p>
       <h2 className="home-instruction-title">How To Play</h2>

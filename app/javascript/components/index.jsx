@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { createRoot } from "react-dom/client";
-import "../../assets/stylesheets/application.css";
+import "../../assets/stylesheets/applications.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "../routes/Home/Home";
 import Game from "../routes/Game/Game";
