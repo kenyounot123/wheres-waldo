@@ -20,6 +20,7 @@ export default function Board() {
         const imgDimensions = imgRef.current.getBoundingClientRect();
         const posX = Math.abs(imgDimensions.x - e.clientX);
         const posY = Math.abs(imgDimensions.y - e.clientY);
+        console.log(posX, posY);
 
         // Add the new position to the state array
         setClickPosition({ x: posX, y: posY });

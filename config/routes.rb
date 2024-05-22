@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :api do 
     namespace :v1 do 
       get 'users/index'
+      get 'targets/index'
     end
   end
   root 'homepage#index'
