@@ -16,7 +16,6 @@ export default function Game() {
         const imgDimensions = imgRef.current.getBoundingClientRect();
         const posX = Math.abs(imgDimensions.x - e.clientX);
         const posY = Math.abs(imgDimensions.y - e.clientY);
-        console.log(posX, posY);
 
         // Add the new position to the state array
         setClickPosition({ x: posX, y: posY });
@@ -51,7 +50,9 @@ export default function Game() {
               left: `${clickPosition.x}px`,
             }}
             className="target-box"
-          ></div>
+          >
+            <div className="options">Choose</div>
+          </div>
         )}
       </div>
     </div>

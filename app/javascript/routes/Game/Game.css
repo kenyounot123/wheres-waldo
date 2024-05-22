@@ -26,4 +26,8 @@
   border: 6px dashed red;
   position: absolute;
   transform: translate(-50%, -50%);
+  background-color: yellow;
+  opacity: 50%;
+}
+.options {
 }
