@@ -19,7 +19,7 @@ export default function Game() {
         throw new Error("Network Response was not ok");
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setTargets(res);
       })
       .catch(() => navigate("/"));
