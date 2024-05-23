@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Game.css";
 import Board from "../../components/Board";
 import Timer from "../../components/Timer";
+import TargetsPic from "../../components/TargetsPic";
 
 export default function Game() {
   const navigate = useNavigate();
@@ -26,12 +27,9 @@ export default function Game() {
   }, []);
   return (
     <div className="game-container">
-      <h1 className="title">Find these 5 people</h1>
-      <div className="targets-pic-container">
-        <img src="targets.jpg" alt="People" />
-      </div>
-      <Board />
-      <Timer />
+      <TargetsPic />
+      <Board targets={targets} setTargets={setTargets} />
+      <Timer targets={targets} />
     </div>
   );
 }

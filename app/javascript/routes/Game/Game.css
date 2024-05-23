@@ -53,3 +53,47 @@
   width: 100px;
   font-size: 1rem;
 }
+.time {
+  text-align: center;
+  position: fixed;
+  bottom: 20px;
+  width: 100px;
+  font-size: 1.1rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0.5em 0.6em;
+  background-color: yellow;
+}
+.flash-msg {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  z-index: 1000; /* Ensure it's on top of other content */
+  font-size: 1.3rem;
+}
+
+.success {
+  background-color: #dff0d8; /* Green background for success */
+  color: #3c763d; /* Dark green text */
+}
+
+.failure {
+  background-color: #f2dede; /* Red background for failure */
+  color: #a94442; /* Dark red text */
+}
+
+.info {
+  background-color: #d9edf7; /* Blue background for info */
+  color: #31708f; /* Dark blue text */
+}
+
+/* Additional styling for the alert appearance */
+.flash-msg {
+  border: 1px solid transparent; /* Transparent border */
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); /* Shadow for depth */
+}

@@ -1,16 +1,15 @@
 import React from "react";
 import { useState, useRef, useEffect } from "react";
-export default function Board() {
-  const [clickPosition, setClickPosition] = useState(null);
+import FlashMessage from "./FlashMessage";
+
+export default function Board({ targets, setTargets }) {
+  const [clickedPosition, setClickedPosition] = useState(null);
   const [clickDropdown, setClickDropdown] = useState(false);
+  const [successFlashMessage, setSuccessFlashMessage] = useState(null);
+  const [failureFlashMessage, setFailureFlashMessage] = useState(null);
   const imgRef = useRef();
-  const targets = [
-    { id: 1, name: "Da Vinci" },
-    { id: 2, name: "Kahlo" },
-    { id: 3, name: "Picasso" },
-    { id: 4, name: "Van Gogh" },
-    { id: 5, name: "Warhol" },
-  ];
+  const dropdownRef = useRef();
+  const targetBtnRef = useRef();
 
   useEffect(() => {
     // Function to handle when image is clicked
@@ -23,7 +22,7 @@ export default function Board() {
         console.log(posX, posY);
 
         // Add the new position to the state array
-        setClickPosition({ x: posX, y: posY });
+        setClickedPosition({ x: posX, y: posY });
         setClickDropdown(false);
       }
     };
@@ -32,42 +31,89 @@ export default function Board() {
     if (imgElement) {
       imgElement.addEventListener("click", handleImageClick);
     }
+    // Handle when user clicks outside of the image
+    const closeClickedBox = (e) => {
+      if (
+        e.target !== imgRef.current &&
+        e.target !== dropdownRef.current &&
+        e.target !== targetBtnRef.current
+      ) {
+        setClickedPosition(null);
+      }
+    };
+    window.addEventListener("click", closeClickedBox);
 
     // Cleanup function to remove the event listener on unmount
     return () => {
       if (imgElement) {
         imgElement.removeEventListener("click", handleImageClick);
       }
+      window.removeEventListener("click", closeClickedBox);
     };
   }, []);
+
+  //Handle logic to check if position clicked is same as position of targets
+  function handleDropDownClick(e, target) {
+    e.preventDefault();
+    if (
+      clickedPosition.x <= target.position.xHigh &&
+      clickedPosition.x >= target.position.xLow &&
+      clickedPosition.y >= target.position.yLow &&
+      clickedPosition.y <= target.position.yHigh
+    ) {
+      // Display success flash message
+      setSuccessFlashMessage("Success! You clicked on the target.");
+      setFailureFlashMessage(null);
+    } else {
+      // Display Fail flash message
+      setFailureFlashMessage("Failed! You missed the target.");
+      setSuccessFlashMessage(null);
+    }
+  }
+
   return (
-    <div className="board-pic-container">
-      <img ref={imgRef} className="play-map" src="map.jpg" alt="Map" />
-      {clickPosition && (
-        <div
-          style={{
-            top: `${clickPosition.y}px`,
-            left: `${clickPosition.x}px`,
-          }}
-          className="target-box"
-        >
-          <button
-            onClick={() => setClickDropdown((prev) => !prev)}
-            className="dropdown-menu"
-          >
-            Who is it?
-          </button>
-          {clickDropdown && (
-            <div className="dropdown-content">
-              {targets.map((target) => (
-                <button className={"target-names"} key={target.id}>
-                  {target.name}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
+    <>
+      {successFlashMessage && (
+        <FlashMessage type="success" message={successFlashMessage} />
       )}
-    </div>
+      {failureFlashMessage && (
+        <FlashMessage type="failure" message={failureFlashMessage} />
+      )}
+      <div className="board-pic-container">
+        <img ref={imgRef} className="play-map" src="map.jpg" alt="Map" />
+        {clickedPosition && (
+          <div
+            style={{
+              top: `${clickedPosition.y}px`,
+              left: `${clickedPosition.x}px`,
+            }}
+            className="target-box"
+          >
+            <button
+              ref={dropdownRef}
+              onClick={() => setClickDropdown((prev) => !prev)}
+              className="dropdown-menu"
+            >
+              Who is it?
+            </button>
+            {/* Each button needs to keep track of the targets state */}
+            {clickDropdown && (
+              <div className="dropdown-content">
+                {targets.map((target) => (
+                  <button
+                    ref={targetBtnRef}
+                    onClick={(e) => handleDropDownClick(e, target)}
+                    className={"target-names"}
+                    key={target.id}
+                  >
+                    {target.name}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </>
   );
 }
