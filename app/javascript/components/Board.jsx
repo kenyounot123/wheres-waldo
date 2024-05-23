@@ -65,6 +65,8 @@ export default function Board({ targets, setTargets }) {
       // Display success flash message
       setSuccessFlashMessage("Success! You clicked on the target.");
       setFailureFlashMessage(null);
+      const newTargets = targets.filter((t) => t.id !== target.id);
+      setTargets(newTargets);
     } else {
       // Display Fail flash message
       setFailureFlashMessage("Failed! You missed the target.");

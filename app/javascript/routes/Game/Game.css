@@ -105,12 +105,12 @@
   justify-content: space-between;
   position: absolute;
   bottom: 50%;
-  left: 30px;
+  left: 15px;
   gap: 50px;
 }
 .target-status-btn {
-  font-size: 1rem;
-  background-color: #dff0d8;
-  color: #3c763d;
-  padding: 10px;
+  text-align: center;
+  width: 55px;
+  padding: 10px 15px;
+  border-radius: 8px;
 }

@@ -23,9 +23,9 @@ User.delete_all
     record: generate_time_record_string
   )
 end
-
-Target.create(name: "Warhol", position: { xLow: 0, xHigh: 65, yLow: 200, yHigh: 370 })
+Target.delete_all
+Target.create(name: "Da Vinci", position: { xLow: 150, xHigh: 204, yLow: 539, yHigh: 673 })
 Target.create(name: "Kahlo", position: { xLow: 913, xHigh: 960, yLow: 415, yHigh: 570 })
 Target.create(name: "Picasso", position: { xLow: 790, xHigh: 860, yLow: 1426, yHigh: 1551 })
 Target.create(name: "Van Gogh", position: { xLow: 130, xHigh: 182, yLow: 1234, yHigh: 1370 })
-Target.create(name: "Da Vinci", position: { xLow: 150, xHigh: 204, yLow: 539, yHigh: 673 })
+Target.create(name: "Warhol", position: { xLow: 0, xHigh: 65, yLow: 200, yHigh: 370 })

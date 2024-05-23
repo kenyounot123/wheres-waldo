@@ -38,7 +38,10 @@ export default function Game() {
   }
   return (
     <div className="game-container">
-      <TargetsPic foundTargets={foundTargets} />
+      <TargetsPic
+        originalTargetsRef={originalTargetsRef}
+        foundTargets={foundTargets}
+      />
       <Board targets={targets} setTargets={setTargets} />
       <Timer targets={targets} />
     </div>
