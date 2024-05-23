@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useRef, useEffect } from "react";
 import FlashMessage from "./FlashMessage";
+import Target from "./TargetBtn";
 
 export default function Board({ targets, setTargets }) {
   const [clickedPosition, setClickedPosition] = useState(null);
@@ -53,7 +54,7 @@ export default function Board({ targets, setTargets }) {
   }, []);
 
   //Handle logic to check if position clicked is same as position of targets
-  function handleDropDownClick(e, target) {
+  function handleDropDownItemClick(e, target) {
     e.preventDefault();
     if (
       clickedPosition.x <= target.position.xHigh &&
@@ -100,14 +101,11 @@ export default function Board({ targets, setTargets }) {
             {clickDropdown && (
               <div className="dropdown-content">
                 {targets.map((target) => (
-                  <button
-                    ref={targetBtnRef}
-                    onClick={(e) => handleDropDownClick(e, target)}
-                    className={"target-names"}
+                  <Target
                     key={target.id}
-                  >
-                    {target.name}
-                  </button>
+                    target={target}
+                    onClick={(e) => handleDropDownItemClick(e, target)}
+                  />
                 ))}
               </div>
             )}

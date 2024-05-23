@@ -72,7 +72,7 @@
   width: 100%;
   padding: 10px;
   text-align: center;
-  z-index: 1000; /* Ensure it's on top of other content */
+  z-index: 1000;
   font-size: 1.3rem;
 }
 
@@ -96,4 +96,21 @@
   border: 1px solid transparent; /* Transparent border */
   border-radius: 4px; /* Rounded corners */
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); /* Shadow for depth */
+}
+.targets-pic-container {
+  position: relative;
+}
+.target-status-container {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 50%;
+  left: 30px;
+  gap: 50px;
+}
+.target-status-btn {
+  font-size: 1rem;
+  background-color: #dff0d8;
+  color: #3c763d;
+  padding: 10px;
 }

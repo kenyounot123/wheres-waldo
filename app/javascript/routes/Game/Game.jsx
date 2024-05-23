@@ -10,6 +10,8 @@ export default function Game() {
   const navigate = useNavigate();
   // Get targets from Rails backend
   const [targets, setTargets] = useState([]);
+  const originalTargetsRef = useRef(null);
+
   useEffect(() => {
     const url = "api/v1/targets/index";
     fetch(url)
@@ -22,12 +24,21 @@ export default function Game() {
       .then((res) => {
         // console.log(res);
         setTargets(res);
+        originalTargetsRef.current = res;
       })
       .catch(() => navigate("/"));
   }, []);
+
+  // Get found targets
+  let foundTargets;
+  if (originalTargetsRef.current) {
+    foundTargets = originalTargetsRef.current.filter(
+      (target) => !targets.includes(target)
+    );
+  }
   return (
     <div className="game-container">
-      <TargetsPic />
+      <TargetsPic foundTargets={foundTargets} />
       <Board targets={targets} setTargets={setTargets} />
       <Timer targets={targets} />
     </div>
