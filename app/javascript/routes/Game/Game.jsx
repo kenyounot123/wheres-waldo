@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./Game.css";
 import Board from "../../components/Board";
 import Timer from "../../components/Timer";
@@ -38,6 +38,7 @@ export default function Game() {
   }
   return (
     <div className="game-container">
+      <Link to={"/"}> Back </Link>
       <TargetsPic
         originalTargetsRef={originalTargetsRef}
         foundTargets={foundTargets}

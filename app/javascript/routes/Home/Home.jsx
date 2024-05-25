@@ -18,7 +18,7 @@ export default () => (
         <img src="demoGuess.gif" alt="gif" />
       </div>
       <Link to={"/play"}>
-        <button>Play Now</button>
+        <button className="play-btn">Play Now</button>
       </Link>
       {/* Dynamically add player names and time from db */}
       <div className="hall-of-fame">
