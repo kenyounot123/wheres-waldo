@@ -6,6 +6,7 @@ import Board from "../../components/Board";
 import Timer from "../../components/Timer";
 import TargetsPic from "../../components/TargetsPic";
 import NewUserForm from "../../components/NewUserForm";
+import Modal from "../../components/Modal";
 
 export default function Game() {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ export default function Game() {
   const [targets, setTargets] = useState([]);
   const [winStatus, setWinStatus] = useState(false);
   const [record, setRecord] = useState(0);
+  const [showModal, setShowModal] = useState(true);
   const originalTargetsRef = useRef(null);
 
   useEffect(() => {
@@ -55,7 +57,9 @@ export default function Game() {
       <Board targets={targets} setTargets={setTargets} />
       <Timer winStatus={winStatus} setRecord={setRecord} />
       {/* winStatus && */}
-      <NewUserForm recordTime={record} />
+      <Modal showModal={showModal} setShowModal={setShowModal}>
+        <NewUserForm recordTime={record} />
+      </Modal>
     </div>
   );
 }
