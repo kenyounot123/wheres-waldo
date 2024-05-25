@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     namespace :v1 do 
       get 'users/index'
       get 'targets/index'
+      post 'users/create'
     end
   end
   root 'homepage#index'

@@ -5,11 +5,14 @@ import "./Game.css";
 import Board from "../../components/Board";
 import Timer from "../../components/Timer";
 import TargetsPic from "../../components/TargetsPic";
+import NewUserForm from "../../components/NewUserForm";
 
 export default function Game() {
   const navigate = useNavigate();
   // Get targets from Rails backend
   const [targets, setTargets] = useState([]);
+  const [winStatus, setWinStatus] = useState(false);
+  const [record, setRecord] = useState(0);
   const originalTargetsRef = useRef(null);
 
   useEffect(() => {
@@ -22,19 +25,25 @@ export default function Game() {
         throw new Error("Network Response was not ok");
       })
       .then((res) => {
-        // console.log(res);
         setTargets(res);
         originalTargetsRef.current = res;
       })
       .catch(() => navigate("/"));
   }, []);
-
+  function getFoundTargets(originalTargets) {
+    let foundTargets;
+    if (originalTargets) {
+      foundTargets = originalTargets.filter(
+        (target) => !targets.includes(target)
+      );
+    }
+    return foundTargets;
+  }
   // Get found targets
-  let foundTargets;
-  if (originalTargetsRef.current) {
-    foundTargets = originalTargetsRef.current.filter(
-      (target) => !targets.includes(target)
-    );
+  let foundTargets = getFoundTargets(originalTargetsRef.current);
+  // Check win condition
+  if (foundTargets && foundTargets.length === 5 && targets.length === 0) {
+    setWinStatus(true);
   }
   return (
     <div className="game-container">
@@ -44,7 +53,9 @@ export default function Game() {
         foundTargets={foundTargets}
       />
       <Board targets={targets} setTargets={setTargets} />
-      <Timer targets={targets} />
+      <Timer winStatus={winStatus} setRecord={setRecord} />
+      {/* winStatus && */}
+      <NewUserForm recordTime={record} />
     </div>
   );
 }
