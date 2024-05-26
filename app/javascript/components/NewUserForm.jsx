@@ -23,7 +23,9 @@ export default function NewUserForm({ recordTime }) {
             className="input-field"
             required
           />
-          <button type="submit">Submit</button>
+          <button className="submit-btn" type="submit">
+            Submit
+          </button>
         </div>
       </form>
     </div>

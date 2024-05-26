@@ -14,7 +14,7 @@ export default function Game() {
   const [targets, setTargets] = useState([]);
   const [winStatus, setWinStatus] = useState(false);
   const [record, setRecord] = useState(0);
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
   const originalTargetsRef = useRef(null);
 
   useEffect(() => {

@@ -24,8 +24,8 @@ User.delete_all
   )
 end
 Target.delete_all
-Target.create(name: "Da Vinci", position: { xLow: 150, xHigh: 204, yLow: 539, yHigh: 673 })
-Target.create(name: "Kahlo", position: { xLow: 913, xHigh: 960, yLow: 415, yHigh: 570 })
-Target.create(name: "Picasso", position: { xLow: 790, xHigh: 860, yLow: 1426, yHigh: 1551 })
-Target.create(name: "Van Gogh", position: { xLow: 130, xHigh: 182, yLow: 1234, yHigh: 1370 })
-Target.create(name: "Warhol", position: { xLow: 0, xHigh: 65, yLow: 200, yHigh: 370 })
+Target.create(name: "Da Vinci", position: { xLow: 115, xHigh: 164, yLow: 413, yHigh: 521 })
+Target.create(name: "Kahlo", position: { xLow: 697, xHigh: 740, yLow: 322, yHigh: 440 })
+Target.create(name: "Picasso", position: { xLow: 610, xHigh: 682, yLow: 1098, yHigh: 1192 })
+Target.create(name: "Van Gogh", position: { xLow: 80, xHigh: 155, yLow: 948, yHigh: 1061 })
+Target.create(name: "Warhol", position: { xLow: 0, xHigh: 50, yLow: 151, yHigh: 280 })
