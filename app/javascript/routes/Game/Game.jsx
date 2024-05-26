@@ -32,6 +32,14 @@ export default function Game() {
       })
       .catch(() => navigate("/"));
   }, []);
+  let foundTargets = getFoundTargets(originalTargetsRef.current);
+
+  useEffect(() => {
+    if (foundTargets && foundTargets.length === 5 && targets.length === 0) {
+      setWinStatus(true);
+    }
+  }, [foundTargets, targets]);
+
   function getFoundTargets(originalTargets) {
     let foundTargets;
     if (originalTargets) {
@@ -40,12 +48,6 @@ export default function Game() {
       );
     }
     return foundTargets;
-  }
-  // Get found targets
-  let foundTargets = getFoundTargets(originalTargetsRef.current);
-  // Check win condition
-  if (foundTargets && foundTargets.length === 5 && targets.length === 0) {
-    setWinStatus(true);
   }
   return (
     <div className="game-container">
@@ -56,8 +58,7 @@ export default function Game() {
       />
       <Board targets={targets} setTargets={setTargets} />
       <Timer winStatus={winStatus} setRecord={setRecord} />
-      {/* winStatus && */}
-      <Modal showModal={showModal} setShowModal={setShowModal}>
+      <Modal winStatus={winStatus} setShowModal={setShowModal}>
         <NewUserForm recordTime={record} />
       </Modal>
     </div>

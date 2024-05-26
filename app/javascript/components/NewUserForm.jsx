@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import formatTime from "../helper/timeHelper";
 export default function NewUserForm({ recordTime }) {
   const [name, setName] = useState("");
   function onChange(e, setName) {
@@ -8,11 +9,13 @@ export default function NewUserForm({ recordTime }) {
   function onSubmit(e) {
     e.preventDefault;
   }
+
   return (
     <div className="form-container">
       <form className={"form"} onSubmit={onSubmit}>
         <h2>
-          Congratulations your record time was <span>{recordTime}</span>!
+          Congratulations your record time was{" "}
+          <span>{formatTime(recordTime)}</span>!
         </h2>
         <label htmlFor="userName">Please enter your name: </label>
         <div>
