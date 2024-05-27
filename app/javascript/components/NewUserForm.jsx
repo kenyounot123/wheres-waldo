@@ -10,7 +10,7 @@ export default function NewUserForm({ recordTime }) {
   }
   function onSubmit(e) {
     e.preventDefault;
-    const record = formatTime(recordTime);
+    const record = `${recordTime}`;
     const url = "api/v1/users/create";
 
     if (name.length === 0) {
@@ -18,6 +18,7 @@ export default function NewUserForm({ recordTime }) {
     }
 
     const body = { name, record };
+    console.log(JSON.stringify(body));
     const token = document.querySelector('meta[name="csrf-token"]').content;
     fetch(url, {
       method: "POST",
