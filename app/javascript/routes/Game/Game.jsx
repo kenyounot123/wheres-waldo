@@ -37,6 +37,7 @@ export default function Game() {
   useEffect(() => {
     if (foundTargets && foundTargets.length === 5 && targets.length === 0) {
       setWinStatus(true);
+      showModal(true);
     }
   }, [foundTargets, targets]);
 
@@ -58,7 +59,11 @@ export default function Game() {
       />
       <Board targets={targets} setTargets={setTargets} />
       <Timer winStatus={winStatus} setRecord={setRecord} />
-      <Modal winStatus={winStatus} setShowModal={setShowModal}>
+      <Modal
+        showModal={showModal}
+        winStatus={winStatus}
+        setShowModal={setShowModal}
+      >
         <NewUserForm recordTime={record} />
       </Modal>
     </div>

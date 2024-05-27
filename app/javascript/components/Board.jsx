@@ -87,31 +87,34 @@ export default function Board({ targets, setTargets }) {
         <img ref={imgRef} className="play-map" src="map.jpg" alt="Map" />
         {clickedPosition && (
           <div
+            className="click-event-container"
             style={{
               top: `${clickedPosition.y}px`,
               left: `${clickedPosition.x}px`,
             }}
-            className="target-box"
           >
-            <button
-              ref={dropdownRef}
-              onClick={() => setClickDropdown((prev) => !prev)}
-              className="dropdown-menu"
-            >
-              Who is it?
-            </button>
-            {/* Each button needs to keep track of the targets state */}
-            {clickDropdown && (
-              <div className="dropdown-content">
-                {targets.map((target) => (
-                  <Target
-                    key={target.id}
-                    target={target}
-                    onClick={(e) => handleDropDownItemClick(e, target)}
-                  />
-                ))}
-              </div>
-            )}
+            <div className="target-box"></div>
+            <div className="dropdown">
+              <button
+                ref={dropdownRef}
+                onClick={() => setClickDropdown((prev) => !prev)}
+                className="dropdown-menu"
+              >
+                Who is it?
+              </button>
+              {/* Each button needs to keep track of the targets state */}
+              {clickDropdown && (
+                <div className="dropdown-content">
+                  {targets.map((target) => (
+                    <Target
+                      key={target.id}
+                      target={target}
+                      onClick={(e) => handleDropDownItemClick(e, target)}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>

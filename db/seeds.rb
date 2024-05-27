@@ -9,20 +9,21 @@
 #   end
 require 'faker'
 
-def generate_time_record_string
+def generate_time_record
   time = Faker::Time.backward(days: rand(365))
-  milliseconds = rand(1000) # Generate random milliseconds
-  time.strftime("%M:%S:") + milliseconds.to_s.rjust(2, '0') # Pad milliseconds with zeros
+  time_in_seconds = time.hour * 3600 + time.min * 60 + time.sec
+  time_in_seconds * 1000
 end
 
 User.delete_all
 # Generate 5 fake users with names and time records
-5.times do
+3.times do
   User.create(
     name: Faker::Name.name,
-    record: generate_time_record_string
+    record: generate_time_record
   )
 end
+
 Target.delete_all
 Target.create(name: "Da Vinci", position: { xLow: 115, xHigh: 164, yLow: 413, yHigh: 521 })
 Target.create(name: "Kahlo", position: { xLow: 697, xHigh: 740, yLow: 322, yHigh: 440 })
