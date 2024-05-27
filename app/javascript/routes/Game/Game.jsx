@@ -37,7 +37,7 @@ export default function Game() {
   useEffect(() => {
     if (foundTargets && foundTargets.length === 5 && targets.length === 0) {
       setWinStatus(true);
-      showModal(true);
+      setShowModal(true);
     }
   }, [foundTargets, targets]);
 

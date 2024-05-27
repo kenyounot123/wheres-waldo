@@ -30,8 +30,9 @@
 .click-event-container {
   display: flex;
   position: absolute;
-  transform: translateY(-50%) translateX(-30px);
+  transform: translateX(-30px) translateY(-30px);
   gap: 5px;
+  height: 150px;
 }
 .dropdown-menu {
   width: 100px;
