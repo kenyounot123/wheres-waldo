@@ -19,7 +19,6 @@ export default function Home() {
         }
       })
       .then((response) => {
-        console.log(response);
         setRecordData(response);
       })
       // Should have an error page

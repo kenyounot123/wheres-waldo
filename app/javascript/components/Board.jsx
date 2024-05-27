@@ -18,10 +18,8 @@ export default function Board({ targets, setTargets }) {
     const handleImageClick = (e) => {
       if (imgRef.current) {
         const imgDimensions = imgRef.current.getBoundingClientRect();
-        console.log(imgDimensions);
         const posX = e.clientX - imgDimensions.left;
         const posY = e.clientY - imgDimensions.top;
-        console.log(posX, posY);
 
         // Add the new position to the state array
         setClickedPosition({ x: posX, y: posY });

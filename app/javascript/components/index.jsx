@@ -1,4 +1,6 @@
 import React from "react";
+import Icon from "@mdi/react";
+import { mdiWeatherSunny, mdiMoonWaningCrescent } from "@mdi/js";
 import { useState } from "react";
 import { createRoot } from "react-dom/client";
 import "../../assets/stylesheets/applications.css";
@@ -25,8 +27,16 @@ const App = () => {
   };
 
   return (
-    <div className={"app"} data-theme={theme}>
-      <button onClick={toggleTheme}>Toggle Dark Mode</button>
+    <div className="app" data-theme={theme}>
+      <div className="flex">
+        <label className="switch">
+          <input type="checkbox" onChange={toggleTheme} />
+          <span className="slider">
+            <Icon className="light-icon" path={mdiWeatherSunny} size={1} />
+            <Icon className="dark-icon" path={mdiMoonWaningCrescent} size={1} />
+          </span>
+        </label>
+      </div>
       <RouterProvider router={router} />
     </div>
   );
