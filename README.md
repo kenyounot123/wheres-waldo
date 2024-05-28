@@ -1,24 +1,17 @@
-# README
+# Photo tagging app (Wheres Waldo variation)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is a photo tagging web application that allows users to identify specific characters within a large photograph. It's inspired by games like "Where's Waldo?".
 
-Things you may want to cover:
+# Features
 
-* Ruby version
+- Users can click on areas of the photo to create a targeting box.
+- A dropdown list within the targeting box allows users to select characters.
+- Tracks the time taken from the photo load to the final identification of all characters.
+- Stores and displays user completion times and names.
 
-* System dependencies
+# How I made it
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Used React as the frontend and Ruby on Rails for the backend
+- Rails was used to handle api requests and responses as well as managing the database schema and changes.
+- React was used to create resusable UI components like the targeting box and dropdowns
+- Also used React to handle api calls to the Rails backend
