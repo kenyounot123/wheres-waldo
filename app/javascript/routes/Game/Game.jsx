@@ -52,7 +52,10 @@ export default function Game() {
   }
   return (
     <div className="game-container">
-      <Link to={"/"}> Back </Link>
+      <Link className="back-btn" to={"/"}>
+        {" "}
+        Back{" "}
+      </Link>
       <TargetsPic
         originalTargetsRef={originalTargetsRef}
         foundTargets={foundTargets}
