@@ -2,6 +2,7 @@
 
 This project is a photo tagging web application that allows users to identify specific characters within a large photograph. It's inspired by games like "Where's Waldo?".
 
+![wheres_waldo](https://github.com/kenyounot123/wheres-waldo/assets/70028795/38afa049-91ba-4c3a-9de3-3229e850fe92)
 # Features
 
 - Users can click on areas of the photo to create a targeting box.
